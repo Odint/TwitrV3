@@ -34,6 +34,43 @@ if(!empty($error)) { ?>
 //Affiche la page demandée
 
 include INC_DIR.DIRECTORY_SEPARATOR.$page.'.php';
+/*echo INC_DIR.DIRECTORY_SEPARATOR.$page;*/
+
+?>
+
+
+<script>
+
+var page = 'includes/<?php echo $page;?>2.php';
+
+
+$.ajax({
+
+  /*url: "includes/profil.php",*/
+  /*url: "includes/test.php",*/
+  /*url: "index2.php",*/
+  /*url: "includes/default.php",*/
+
+  /*url: "includes/default2.php",*/
+  url: page,
+  /*url: "includes/default2.php",*/
+  /*url: "index2.php",*/
+  /*url: "default.php",*/
+  type:"GET",
+  success: function (r,x,y) {
+        /*$("body").html($(r).find("body").html());*/
+        $("body").html(r);
+    }
+});    
+
+/*function (r,x,y) {
+    $("body").html($(r).find("body").html());
+    }*/
+</script>
+
+
+
+<?php 
 
 
 $oPDO = NULL;

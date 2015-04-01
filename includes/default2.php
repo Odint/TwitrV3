@@ -1,6 +1,14 @@
 <nav id="loginbar">
 <?php
 
+
+session_start();
+define('APP_PATH', __DIR__);
+include ('_conf.php');
+include ('functions.php');
+?>
+<div>version js</div>
+<?php
 if(!isset($_SESSION['ID'])) {
     
     $sessionID = '';
@@ -21,7 +29,7 @@ if(!isset($_SESSION['ID'])) {
     <input type="text" name="message">
     <input type="submit" value="Envoyer">
     </form>
-    <a href="logout.php">Se déconnecter</a>
+    <a href="logout2.php">Se déconnecter</a>
     <a href="index.php?favoris=1">Mes favoris</a>
     <?php
 
