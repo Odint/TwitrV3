@@ -5,7 +5,7 @@ include (APP_PATH.'/conf/_conf.php');
 include (INC_DIR.'/functions.php');
 include (INC_DIR.'/header.php');
 
-
+echo "BUIEBFIZEFBJNEOZFNSS";
 
 if(isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
