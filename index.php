@@ -16,7 +16,8 @@ if(isset($_SESSION['error'])) {
 
 if(filter_has_var(INPUT_GET, 'page')){
     $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
-    
+    ?>  
+    <?php 
 }
 
 if(filter_has_var(INPUT_POST, 'login')){
@@ -26,6 +27,9 @@ if(filter_has_var(INPUT_POST, 'login')){
 
 if(filter_has_var(INPUT_GET, 'favoris')) {
     $favoris = filter_input(INPUT_GET, 'favoris', FILTER_SANITIZE_NUMBER_INT);
+    ?>
+    <INPUT TYPE="hidden" id="fav" NAME="fav" VALUE="<?php echo $favoris;?>"> 
+      <?php 
 }
 
 if(!empty($error)) { ?>
@@ -41,16 +45,14 @@ include INC_DIR.DIRECTORY_SEPARATOR.$page.'.php';
 /*echo INC_DIR.DIRECTORY_SEPARATOR.$page;*/
 
 ?>
-
-
+<INPUT TYPE="hidden" id="page" NAME="page" VALUE="<?php echo 'includes/'.$page.'2.php';?>"> 
 <script>
 
-var page = 'includes/<?php echo $page;?>2.php';
-var fav = '<?php echo $favoris;?>';
-
+var page = $("#page").val()
+var fav = $("#fav").val()
 
 $.ajax({
-
+  
   url: page,
   data: {favoris : fav},
   type:"GET",
