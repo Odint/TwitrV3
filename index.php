@@ -5,6 +5,17 @@ include (APP_PATH.'/conf/_conf.php');
 include (INC_DIR.'/functions.php');
 include (INC_DIR.'/header.php');
 
+$path_parts = pathinfo($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+
+/** directory elements 
+*
+echo $path_parts['dirname'], "\n";
+echo "</br>";
+echo $path_parts['basename'], "\n";
+echo "</br>";
+echo $path_parts['extension'], "\n";
+*
+**/
 
 if(isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
@@ -46,11 +57,13 @@ include INC_DIR.DIRECTORY_SEPARATOR.$page.'.php';
 /*echo INC_DIR.DIRECTORY_SEPARATOR.$page;*/
 
 ?>
+<INPUT TYPE="hidden" id="dir" NAME="dir" VALUE="<?php echo $path_parts['dirname']; ?>">
 <INPUT TYPE="hidden" id="page" NAME="page" VALUE="<?php echo 'includes/'.$page.'2.php';?>"> 
 <script>
 
 var page = $("#page").val()
 var fav = $("#fav").val()
+var dir = $("#dir").val()
 
 $.ajax({
 
@@ -65,6 +78,11 @@ $.ajax({
     }
 });
 
+$('#milieu a').on('click', function() {
+  var href = $(this).attr('href'); 
+  //alert (dir+'/'+href);
+  window.location.href = dir+'/'+href;  
+});
 
 
 
