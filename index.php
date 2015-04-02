@@ -59,8 +59,16 @@ $.ajax({
   success: function (r,x,y) {
         /*$("body").html($(r).find("body").html());*/
         $("body").html(r);
+        $('#Ntwit').attr('action','#');
     }
-});    
+});
+
+$(document).on('submit','#Ntwit',function(event){
+   event.preventDefault();
+   $.post('includes/default2.php',{message:$('#message').val()},function(r){
+       $("body").html(r);
+   });
+});
 
 </script>
 

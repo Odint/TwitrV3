@@ -25,8 +25,8 @@ if(!isset($_SESSION['ID'])) {
     ?>
     <img src="<?php echo IMG_LINK.'/'.$_SESSION['avatar'];?>" alt="nothing">
     
-    <form method="POST" action="index.php">
-    <input type="text" name="message">
+    <form method="POST" id="Ntwit" action="index.php">
+    <input type="text" id="message" name="message">
     <input type="submit" value="Envoyer">
     </form>
     <a href="logout2.php">Se déconnecter</a>
@@ -92,13 +92,13 @@ if(isset($_SESSION['ID'])) {
     if(!empty($Twit)) {
 //Crée une nouvelle action de l'utilisateur retwit(sup) ou favoris(sup) 
         newAction($Twit,$_SESSION['ID']);
-        header('Location: index.php');
+        header('Location: '.APP_PATH.DIRECTORY_SEPARATOR.'index.php');
     }
 
     if(!empty($twit) ) {
-//enregistre un nouveau twit        
+//enregistre un nouveau cho newTwit($twtwit        
         echo newTwit($twit,$_SESSION['ID']);
-        header('Location: index.php');
+        header('Location: ../index.php');
     }
 
 //récupère les ID des favoris de l'utilisateur    
