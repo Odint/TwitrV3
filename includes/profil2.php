@@ -5,6 +5,8 @@ $password = '';
 $checkpassword = '';
 $login = '';
 $error = FALSE;
+
+
 if(!empty($_SESSION) && 
     isset($_SESSION['login'],
           $_SESSION['mail'],  
@@ -12,6 +14,10 @@ if(!empty($_SESSION) &&
         ){
 
     $login = $_SESSION['login'];
+    $error = TRUE;
+}
+
+if (isset($_SESSION['error'])) {
     $error = TRUE;
 }
 
