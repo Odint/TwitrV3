@@ -40,14 +40,10 @@ if(!isset($_SESSION['ID'])) {
 
 <?php
 
-/*$favoris =0;*/
-
 //Afficher uniquement les favoris
 if(filter_has_var(INPUT_GET, 'favoris')) {
     $favoris = filter_input(INPUT_GET, 'favoris', FILTER_SANITIZE_NUMBER_INT);
 }
-
-
 
 //Passe aux twits suivants
 if(filter_has_var(INPUT_GET, 'next')){

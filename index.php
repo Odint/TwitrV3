@@ -24,6 +24,10 @@ if(filter_has_var(INPUT_POST, 'login')){
     $_SESSION['idUser'] = getUserID($login);
 }
 
+if(filter_has_var(INPUT_GET, 'favoris')) {
+    $favoris = filter_input(INPUT_GET, 'favoris', FILTER_SANITIZE_NUMBER_INT);
+}
+
 if(!empty($error)) { ?>
     <div class="error"><?php echo $error;?></div>  
     
@@ -42,20 +46,13 @@ include INC_DIR.DIRECTORY_SEPARATOR.$page.'.php';
 <script>
 
 var page = 'includes/<?php echo $page;?>2.php';
+var fav = '<?php echo $favoris;?>';
 
 
 $.ajax({
 
-  /*url: "includes/profil.php",*/
-  /*url: "includes/test.php",*/
-  /*url: "index2.php",*/
-  /*url: "includes/default.php",*/
-
-  /*url: "includes/default2.php",*/
   url: page,
-  /*url: "includes/default2.php",*/
-  /*url: "index2.php",*/
-  /*url: "default.php",*/
+  data: {favoris : fav},
   type:"GET",
   success: function (r,x,y) {
         /*$("body").html($(r).find("body").html());*/
@@ -63,9 +60,6 @@ $.ajax({
     }
 });    
 
-/*function (r,x,y) {
-    $("body").html($(r).find("body").html());
-    }*/
 </script>
 
 
