@@ -84,7 +84,6 @@ $('#milieu a').on('click', function() {
   window.location.href = dir+'/'+href;  
 });
 
-
 </script>
 
 
