@@ -64,7 +64,14 @@ $.ajax({
         $('#Ntwit').attr('action','#');
     }
 });
-
+$(document).on('submit','#Ntwit',function(event){
+        event.preventDefault();
+   $.post('includes/default2.php',{message:$('#message').val()},function(resultat){
+       alert(resultat);
+       $("body").html(resultat);
+   });
+   
+});
 
 
 
