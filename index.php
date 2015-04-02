@@ -8,7 +8,8 @@ include (INC_DIR.'/header.php');
 
 if(isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
-    unset($_SESSION['error']);
+
+    /*unset($_SESSION['error']);*/ /*pour la version ajax*/
     //header('refresh:5;'.$_SERVER['PHP_SELF']);
 }
 
@@ -52,7 +53,7 @@ var page = $("#page").val()
 var fav = $("#fav").val()
 
 $.ajax({
-  
+
   url: page,
   data: {favoris : fav},
   type:"GET",

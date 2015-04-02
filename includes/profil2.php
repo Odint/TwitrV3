@@ -1,11 +1,10 @@
 <?php
-
+session_start(); /*pour la version ajax*/
 $mail = '';
 $password = '';
 $checkpassword = '';
 $login = '';
 $error = FALSE;
-
 if(!empty($_SESSION) && 
     isset($_SESSION['login'],
           $_SESSION['mail'],  
@@ -20,7 +19,7 @@ if(!empty($_SESSION) &&
 
         <div id="container">
             <div>version js</div>
-            
+
             <?php 
             if($error == TRUE) {
                 ?>
