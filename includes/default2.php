@@ -98,7 +98,7 @@ if(isset($_SESSION['ID'])) {
     if(!empty($twit) ) {
 //enregistre un nouveau cho newTwit($twtwit        
         echo newTwit($twit,$_SESSION['ID']);
-        header('Location: ../index.php');
+        header('Location: index.php');
     }
 
 //récupère les ID des favoris de l'utilisateur    
