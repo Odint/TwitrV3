@@ -7,16 +7,6 @@ include (INC_DIR.'/header.php');
 
 $path_parts = pathinfo($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 
-/** directory elements 
-*
-echo $path_parts['dirname'], "\n";
-echo "</br>";
-echo $path_parts['basename'], "\n";
-echo "</br>";
-echo $path_parts['extension'], "\n";
-*
-**/
-
 if(isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
 
@@ -66,7 +56,6 @@ var fav = $("#fav").val()
 var dir = $("#dir").val()
 
 $.ajax({
-
   url: page,
   data: {favoris : fav},
   type:"GET",
@@ -78,11 +67,17 @@ $.ajax({
     }
 });
 
-$('#milieu a').on('click', function() {
-  var href = $(this).attr('href'); 
-  //alert (dir+'/'+href);
-  window.location.href = dir+'/'+href;  
-});
+$(document).on("click","#milieu a",function(e){
+    var href = $(this).attr('href'); 
+    $.ajax({
+    url: href,
+    type:"GET",
+    success: function (r,x,y) {
+        $("body").empty();
+        $("body").html(r);
+        }
+    });
+})
 
 </script>
 
