@@ -96,7 +96,7 @@ if(isset($_SESSION['ID'])) {
     }
 
     if(!empty($twit) ) {
-//enregistre un nouveau cho newTwit($twtwit        
+//enregistre un nouveau Twit   
         echo newTwit($twit,$_SESSION['ID']);
         header('Location: index.php');
     }
