@@ -29,12 +29,12 @@ if(!isset($_SESSION['ID'])) {
     <input type="text" id="message" name="message">
     <input type="submit" value="Envoyer">
     </form>
-    <a href="logout2.php">Se déconnecter</a>  
+    <!-- Pour Déconnecter et pour tout faire en js, on va faire appel à un script ajax en bas de cette page.
+    On va prendre le dessus sur l'action de la balise a -->    
+    <a id="adec" href="logout.php">Se déconnecter</a>
     <!-- Pour les favorirs et pour tout faire en js, on va faire appel à un script ajax en bas de cette page.
     On va prendre le dessus sur l'action de la balise a -->
     <a id="afav" href="index.php?favoris=1">Mes favoris</a>
-
-
     <?php
 }
 
@@ -212,5 +212,18 @@ $(document).on("click","#afav",function(e){
         }
     });
 })
+$(document).on("click","#adec",function(e){
+    $.ajax({
+    url: "logout.php",
+    type:"GET",
+    success: function (r,x,y) {
+        $("body").empty();
+        $("body").html(r);
+        }
+    });
+})
+
+
+
 </script>
 
