@@ -7,7 +7,7 @@ define('APP_PATH', __DIR__);
 include ('_conf.php');
 include ('functions.php');
 ?>
-<div>version js</div>
+<div id="testjp">version js</div>
 <?php
 if(!isset($_SESSION['ID'])) {
     
@@ -29,10 +29,13 @@ if(!isset($_SESSION['ID'])) {
     <input type="text" id="message" name="message">
     <input type="submit" value="Envoyer">
     </form>
-    <a href="logout2.php">Se déconnecter</a>
-    <a href="index.php?favoris=1">Mes favoris</a>
-    <?php
+    <a href="logout2.php">Se déconnecter</a>  
+    <!-- Pour les favorirs et pour tout faire en js, on va faire appel à un script ajax en bas de cette page.
+    On va prendre le dessus sur l'action de la balise a -->
+    <a id="afav" href="index.php?favoris=1">Mes favoris</a>
 
+
+    <?php
 }
 
 ?>
@@ -197,5 +200,17 @@ if($countTwits > 0) {
     <p class="twittext"></p>
     <p class="twitauteur"></p>
     </article>
-<?php }
+<?php } ?>
+<script>
+$(document).on("click","#afav",function(e){
+    $.ajax({
+    url: "index.php?favoris=1",
+    type:"GET",
+    success: function (r,x,y) {
+        $("body").empty();
+        $("body").html(r);
+        }
+    });
+})
+</script>
 
